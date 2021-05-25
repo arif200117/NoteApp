@@ -1,6 +1,7 @@
 package com.d121191065.noteapp
 
 import androidx.lifecycle.LiveData
+import androidx.room.*
 
 
 @Dao

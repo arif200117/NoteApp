@@ -1,5 +1,11 @@
 package com.d121191065.noteapp
 
+import android.app.Application
+import androidx.lifecycle.LiveData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 class NoteRepository(application: Application) {
 
     private val noteDao: NoteDao?
