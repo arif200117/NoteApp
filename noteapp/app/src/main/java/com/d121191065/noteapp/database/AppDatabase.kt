@@ -1,9 +1,12 @@
+package com.d121191065.noteapp.database
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.d121191065.noteapp.NoteDao
-import com.d121191065.noteapp.Note
+import com.d121191065.noteapp.database.note.Note
+import com.d121191065.noteapp.database.note.NoteDao
+
 @Database(entities = [Note::class], exportSchema = false, version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun noteDao(): NoteDao
@@ -16,14 +19,15 @@ abstract class AppDatabase : RoomDatabase() {
             if (instance == null) {
                 synchronized(AppDatabase::class) {
                     instance = Room
-                        .databaseBuilder(
-                            context,
-                            AppDatabase::class.java,
-                            DB_NAME)
-                        .build()
+                            .databaseBuilder(
+                                    context,
+                                    AppDatabase::class.java,
+                                    DB_NAME
+                            )
+                            .build()
                 }
             }
             return instance
         }
     }
-} 
+}

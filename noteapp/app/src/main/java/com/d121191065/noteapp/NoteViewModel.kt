@@ -1,9 +1,10 @@
 package com.d121191065.noteapp
+
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.d121191065.noteapp.Note
-import com.d121191065.noteapp.NoteRepository
+import com.d121191065.noteapp.database.note.Note
+import com.d121191065.noteapp.database.note.NoteRepository
 
 class NoteViewModel (application: Application) : AndroidViewModel(application) {
 

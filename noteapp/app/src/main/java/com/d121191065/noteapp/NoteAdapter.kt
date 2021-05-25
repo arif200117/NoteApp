@@ -1,10 +1,11 @@
 package com.d121191065.noteapp
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.d121191065.noteapp.Note
+import com.d121191065.noteapp.database.note.Note
 import kotlinx.android.synthetic.main.item_note.view.*
 
 class NoteAdapter(private val context: Context?, private val listener: (Note, Int) -> Unit) :

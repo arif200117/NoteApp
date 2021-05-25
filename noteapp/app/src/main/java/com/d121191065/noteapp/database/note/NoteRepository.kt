@@ -1,13 +1,13 @@
-package com.d121191065.noteapp
+package com.d121191065.noteapp.database.note
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import com.d121191065.noteapp.database.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class NoteRepository(application: Application) {
-
     private val noteDao: NoteDao?
     private var notes: LiveData<List<Note>>? = null
 
@@ -20,6 +20,7 @@ class NoteRepository(application: Application) {
     fun getNotes(): LiveData<List<Note>>? {
         return notes
     }
+
 
     fun insert(note: Note) = runBlocking {
         this.launch(Dispatchers.IO) {
@@ -40,5 +41,5 @@ class NoteRepository(application: Application) {
             noteDao?.updateNote(note)
         }
     }
-
 }
+
