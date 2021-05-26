@@ -13,47 +13,38 @@ import com.d121191065.noteapp.database.note.Note
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var noteViewModel: NoteViewModel
     private lateinit var noteAdapter: NoteAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         noteRV.layoutManager = LinearLayoutManager(this)
         noteAdapter = NoteAdapter(this) { note, i ->
             showAlertMenu(note)
         }
         noteRV.adapter = noteAdapter
-
         noteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
         noteViewModel.getNotes()?.observe(this, Observer {
             noteAdapter.setNotes(it)
         })
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.addMenu -> showAlertDialogAdd()
         }
         return super.onOptionsItemSelected(item)
     }
-
     private fun showAlertDialogAdd() {
         val alert = AlertDialog.Builder(this)
         val editText = EditText(applicationContext)
         editText.hint = "Enter your text"
-
         alert.setTitle("New Note")
         alert.setView(editText)
-
         alert.setPositiveButton("Save") { dialog, _ ->
             noteViewModel.insertNote(
                 Note(note = editText.text.toString())
@@ -82,7 +73,6 @@ class MainActivity : AppCompatActivity() {
         }
         builder.show()
     }
-
     private fun showAlertDialogEdit(note: Note) {
         val alert = AlertDialog.Builder(this)
 

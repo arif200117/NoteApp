@@ -10,9 +10,7 @@ import kotlinx.android.synthetic.main.item_note.view.*
 
 class NoteAdapter(private val context: Context?, private val listener: (Note, Int) -> Unit) :
     RecyclerView.Adapter<NoteViewHolder>() {
-
     private var notes = listOf<Note>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -34,7 +32,6 @@ class NoteAdapter(private val context: Context?, private val listener: (Note, In
         notifyDataSetChanged()
     }
 }
-
 class NoteViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
     fun bindItem(context: Context, note: Note, listener: (Note, Int) -> Unit) {
         itemView.noteTV.text = note.note

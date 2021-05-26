@@ -3,8 +3,7 @@ package com.d121191065.noteapp.database.note
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
-@Dao
-interface NoteDao {
+@Dao interface NoteDao {
     @Query("Select * from note")
     fun getNotes(): LiveData<List<Note>>
 
